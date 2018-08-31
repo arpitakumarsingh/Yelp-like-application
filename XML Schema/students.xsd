@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import schemaLocation="buildings.xsd" namespace=""/>
+
+	<xsd:element type="StudentTableType" name="StudentTable"/>
+	<xsd:complexType name="StudentTableType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" ref="Student"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+<xsd:element name="Student">
+<xsd:complexType>
+	<xsd:sequence>
+		<xsd:element name="SSN">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="\d{3}-\d{2}-\d{4}"/>
+			</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:element>
+
+		<xsd:element name="Name">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:string"/>
+			</xsd:simpleType>
+		</xsd:element>	
+
+		<xsd:element name="DOB">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:date"/>
+			</xsd:simpleType>
+		</xsd:element>
+
+		<xsd:element name="Gender">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="M"/>
+				<xsd:enumeration value="F"/>
+			</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:element>
+
+		<xsd:element name="Type">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="Both"/>
+				<xsd:enumeration value="Master"/>
+				<xsd:enumeration value="Phd"/>
+			</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:element>
+
+		<xsd:element name="BuildingCode" maxOccurs="unbounded" minOccurs="0">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[A-Z]{3}"/>
+			</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:element>
+
+		<xsd:element name="Phone" maxOccurs="unbounded" minOccurs="1">
+			<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{3}[-][0-9]{3}[-][0-9]{4}"/>
+				<xsd:minLength value="10"/>
+				<xsd:maxLength value="14"/>
+			</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:element>
+		
+	</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>		

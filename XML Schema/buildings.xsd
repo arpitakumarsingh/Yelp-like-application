@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:element name="BuildingTable" type="BuildingTableType"></xsd:element>
+	<xsd:complexType name="BuildingTableType">
+		<xsd:sequence>
+			<xsd:element ref="Building" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="Building">
+		<xsd:complexType>
+			<xsd:sequence>
+				
+				<xsd:element name="BuildingCode">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="[A-Z][A-Z][A-Z]"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				
+				<xsd:element name="BuildingName">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+
+				<xsd:element name="Position">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Latitude" type="xsd:decimal"></xsd:element>
+							<xsd:element name="Longitude" type="xsd:decimal"></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element name="Address" maxOccurs="1" minOccurs="0">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="StreetNo" type="xsd:int"></xsd:element>
+							<xsd:element name="StrName" type="xsd:string"></xsd:element>
+							<xsd:element name="City" type="xsd:string"></xsd:element>
+							<xsd:element name="State" type="xsd:string"></xsd:element>
+							<xsd:element name="Zip" type="xsd:int"></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
